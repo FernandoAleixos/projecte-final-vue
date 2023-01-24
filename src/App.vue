@@ -1,26 +1,29 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppMenu from './components/AppMenu.vue';
+import ProductForm from './components/ProductForm.vue';
+import ProductsTable from './components/ProductsTable.vue';
+
+import { store } from './store/data';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { ProductsTable, ProductForm, AppMenu },
+  data() {
+        return {
+            products: store.products,
+            categories: store.categories,
+        };
+    },
+    mounted() {
+      store.loadData()
+    },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<template>
+  <div class="container">
+    <AppMenu></AppMenu>
+    <ProductsTable></ProductsTable>
+    <ProductForm></ProductForm>
+    <footer><small>Diseño Web en Entorno Cliente - IES Mestre Ramon Esteve</small></footer>
+  </div>
+</template>
