@@ -14,10 +14,8 @@
       </thead>
       <tbody>
         <tr>
-          <product-item v-for="product in products" :key="product.id" :cat="product.categories" />
+          <product-item v-for="product in products" :key="product.id" />
           <!--TODO Items-->
-
-
         </tr>
       </tbody>
     </table>
@@ -29,12 +27,11 @@
   import ProductItem from './ProductItem.vue';
 
   export default {
-    name: "product-item",
+    name: "product-table",
     components: { ProductItem },
     data() {
       return {
-        products: store.products,
-        categories: store.categories
+        products: store.products
       }
     },
     mounted() {
