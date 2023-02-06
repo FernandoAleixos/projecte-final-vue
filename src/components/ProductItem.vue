@@ -1,5 +1,25 @@
 <template> 
-
+  <td>
+    {{ product.id }}
+  </td>
+  <td>
+    {{ product.name }}
+  </td>
+  <td>
+    {{ category.name }}
+  </td>
+  <td>
+    {{ product.units }}
+  </td>
+  <td>
+    {{ product.price }}
+  </td>
+  <td>
+    <!--TODO function que calcula el importe del producto-->
+  </td>
+  <td>
+    <!--TODO Acciones del producto (subir/bajar unidades, editar y borrar)-->
+  </td>
 </template>
 <script>
   import { store } from '../store/data';
@@ -9,7 +29,8 @@
     components: { ProductItem },
     data() {
       return {
-        products: store.products
+        product: store.products,
+        category: store.categories
       }
     },
     methods: {
