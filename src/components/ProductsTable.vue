@@ -17,6 +17,12 @@
           <product-item v-for="product in products" :key="product.id" />
           <!--TODO Items-->
         </tr>
+        <tr>
+          <td>Productos:</td>
+          <td><!-- Cantidad de productos --></td>
+          <td>Importe total:</td>
+          <td><!-- Suma de todos los productos € --></td>
+        </tr>
       </tbody>
     </table>
   </div>

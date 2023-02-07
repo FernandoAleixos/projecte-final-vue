@@ -1,33 +1,60 @@
-const products = [{
-    id: 1,
-    name: "Calabazas",
-    category: 1,
-    units: 100,
-    price: 11,
-  },
-  {
-    id: 3,
-    name: "Palomitas",
-    category: 2,
-    units: 100,
-    price: 1,
-  },
-];
+import { reactive } from "vue";
 
-const categories = [{
-    id: 0,
-    name: "Frutas",
+export const store = {
+  debug: true,
+  state: {
+    products: [
+      {
+        id: 1,
+        name: "Calabazas",
+        category: 1,
+        units: 100,
+        price: 11,
+      },
+      {
+        id: 3,
+        name: "Palomitas",
+        category: 2,
+        units: 100,
+        price: 1,
+      },
+    ],
+    categories: [
+      {
+        id: 0,
+        name: "Frutas",
+      },
+      {
+        id: 1,
+        name: "Verduras",
+      },
+      {
+        id: 2,
+        name: "Frutos Secos",
+      },
+      {
+        id: 3,
+        name: "Dulces",
+      },
+    ],
   },
-  {
-    id: 1,
-    name: "Verduras",
+  calcularImporte(id) {
+
   },
-  {
-    id: 2,
-    name: "Frutos Secos",
+
+  subirUds(id) {
+
   },
-  {
-    id: 3,
-    name: "Dulces",
+
+  bajarUds(id) {
+
   },
-];
+
+  editarProd(id) {
+
+  },
+
+  eliminarProd(id) {
+
+  }
+};
