@@ -1,30 +1,30 @@
 <template>
   <div class="container">
+    <h1>Listado de productos</h1>
+
     <table class="table table-striped">
-      <thead class="thead-dark">
+      <thead class="table-dark">
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Categoria</th>
-          <th scope="col">Uds.</th>
-          <th scope="col">Precio/u</th>
-          <th scope="col">Importe</th>
-          <th scope="col">Acciones</th>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Categoria</th>
+          <th>Uds.</th>
+          <th>Precio/u</th>
+          <th>Importe</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <product-item v-for="product in products" :key="product.id" />
-          <!--TODO Items-->
-        </tr>
+          <product-item v-for="product in products" :key="product.id" :prod="product"/>
         <tr>
           <td>Productos:</td>
-          <td><!-- Cantidad de productos --></td>
+          <td>{{ products.length }}</td>
           <td>Importe total:</td>
-          <td><!-- Suma de todos los productos € --></td>
+          <td>{{  }}</td>
         </tr>
       </tbody>
     </table>
+
   </div>
 </template>
 
@@ -37,11 +37,17 @@
     components: { ProductItem },
     data() {
       return {
-        products: store.products
+        products: store.state.products,
+        categories: store.state.categories
       }
     },
-    mounted() {
-      store.loadData()
+    methods: {
+      
     }
+    /* mounted() {
+      store.loadData()
+    } */
   }
 </script>
+<style>
+</style>

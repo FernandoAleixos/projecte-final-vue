@@ -1,76 +1,95 @@
 <template>
-  <td>
-    {{ product.id }}
-  </td>
-  <td>
-    {{ product.name }}
-  </td>
-  <td>
-    {{ category.name }}
-  </td>
-  <td>
-    {{ product.units }}
-  </td>
-  <td>
-    {{ product.price }}
-  </td>
-  <td>
-    <!--TODO function que calcula el importe del producto-->
-  </td>
-  <td>
-    <!--TODO Acciones del producto (subir/bajar unidades, editar y borrar)-->
-    <button @click="udsUp" type="button" class="btn btn-default btn-sm bg-light">
-      <span class="glyphicon glyphicon-arrow-up"></span>
-    </button>
+  <tr>
+    <td>
+      {{ prod.id }}
+    </td>
+    <td>
+      {{ prod.name }}
+    </td>
+    <td>
+      {{ prod.category }}
+    </td>
+    <td>
+      {{ prod.units }}
+    </td>
+    <td>
+      {{ prod.price + " €/u" }}
+    </td>
+    <td>
+      <!--TODO function que calcula el importe del producto-->
+      {{ importe() }}
+    </td>
+    <td>
+      <!--TODO Acciones del producto (subir/bajar unidades, editar y borrar)-->
+      <button @click="udsUp" class="btn btn-sm bg-light">
+        <span class="bi bi-arrow-up"></span>
+      </button>
 
-    <button @click="udsDown" type="button" class="btn btn-default btn-sm bg-light">
-      <span class="glyphicon glyphicon-arrow-down"></span>
-    </button>
+      <button @click="udsDown" class="btn btn-default btn-sm bg-light">
+        <span class="bi bi-arrow-down bg-light"></span>
+      </button>
 
-    <button @click="editProd" type="button" class="btn btn-default btn-sm bg-light">
-      <span class="glyphicon glyphicon-pencil"></span>
-    </button>
+      <button @click="editProd" class="btn btn-default btn-sm bg-light">
+        <span class="bi bi-pencil bg-light"></span>
+      </button>
 
-    <button @click="delProd" type="button" class="btn btn-default btn-sm bg-light">
-      <span class="glyphicon glyphicon-trash"></span>
-    </button>
-  </td>
+      <button @click="delProd" class="btn btn-default btn-sm bg-light">
+        <span class="bi bi-trash3 bg-light"></span>
+      </button>
+    </td>
+  </tr>
 </template>
+
 <script>
 import { store } from '../store/data';
 
 export default {
   name: "product-item",
-  components: { ProductItem },
+
+  props: {
+    prod: {
+      type: Object,
+      required: true
+    },
+  },
   data() {
     return {
-      product: store.products,
-      category: store.categories
+
     }
   },
   methods: {
-    importe(id) {
+    importe() {
       //Calcula el importe total del producto
-      store.calcularImporte(id)
+      let total = this.prod.price * this.prod.units;
+      return total.toFixed(2) + '€';
     },
-    udsUp(id) {
+    udsUp() {
       //Subir unidades al producto
-      store.subirUds(id)
+      store.subirUds(this.prod.id)
     },
-    udsDown(id) {
+    udsDown() {
       //Bajar unidades al producto
-      store.bajarUds(id)
+      store.bajarUds(this.prod.id)
     },
-    editProd(id) {
+    editProd() {
       //Editar el producto
-      store.editarProd(id)
+      store.editarProd(this.prod.id)
     },
-    delProd(id) {
+    delProd() {
       //Eliminar el producto
       if (window.confirm('Estas seguro que quieres eliminar este producto?')) {
-        store.eliminarProd(id);
+        store.eliminarProd(this.prod.id)
       }
     }
   }
 }
 </script>
+<style scoped>
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+tr,
+td {
+  border: 0;
+  padding: 0;
+}
+</style>
