@@ -20,7 +20,7 @@
           <td>Productos:</td>
           <td>{{ products.length }}</td>
           <td>Importe total:</td>
-          <td>{{  }}</td>
+          <td>{{ total + '€'}}</td>
         </tr>
       </tbody>
     </table>
@@ -38,15 +38,21 @@
     data() {
       return {
         products: store.state.products,
-        categories: store.state.categories
+        categories: store.state.categories,
+        total: 0
       }
     },
-    methods: {
-      
-    }
-    /* mounted() {
+    computed: {
+      total() {
+        return this.products.reduce((total, product) => {
+        return total + (product.units * product.price)
+      }, 0)
+  }
+    },
+    mounted() {
       store.loadData()
-    } */
+    },
+    
   }
 </script>
 <style>

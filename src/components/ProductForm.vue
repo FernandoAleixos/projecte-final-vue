@@ -88,7 +88,7 @@
     methods: {
       //Guarda los datos del formulario en el array del Store Pattern
       submitForm() {
-        store.addProduct(this.product.name, this.product.category, 
+        store.addProd(this.product.name, this.product.category, 
           this.product.units, this.product.price);
       }
     }

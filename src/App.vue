@@ -17,12 +17,10 @@ import { store } from './store/data';
 export default {
   components: { ProductsTable, ProductForm, AppMenu },
   data() {
-        return {
-            
-        };
-    },
-    /* mounted() {
-      store.loadData()
-    }, */
+      return {}
+  },
+  mounted() {
+    store.loadData()
+  },
 }
 </script>

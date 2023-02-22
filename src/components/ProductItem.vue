@@ -53,9 +53,7 @@ export default {
     },
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   methods: {
     importe() {
@@ -73,7 +71,7 @@ export default {
     },
     editProd() {
       //Editar el producto
-      store.editarProd(this.prod.id)
+      console.log('Futuras implementaciones')
     },
     delProd() {
       //Eliminar el producto
@@ -81,14 +79,16 @@ export default {
         store.eliminarProd(this.prod.id)
       }
     }
+  },
+  mounted() {
+    store.loadData()
   }
 }
 </script>
 <style scoped>
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 
-tr,
-td {
+tr, td {
   border: 0;
   padding: 0;
 }
